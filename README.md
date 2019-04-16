@@ -14,7 +14,7 @@
 5. Use `.clone` to make a copy, they will have different id
 
 ## Array
-1. Creat array by `a = []`
+1. Creat array by `a = [1, 2, 3]`
 2. `.size` returns size
 3. You can insert element by `a[a.size] = 'new element'`, or `a << 'new element'`
 4. You can insert element greater than size, the gap will be filled by nil
@@ -50,3 +50,13 @@
     ```
 
 ## Hash
+1. Create Hash by `h = { one: 'uno', two: 'dos' }`
+2. `h[:not_exist]` can return nil, `h[:not_exist]` will raise `KeyError`
+3. Use `.include?` to check existence
+4. `.keys` returns array of keys, `.values` returns array of values
+5. Hash can merge another hash by `.merge`
+6. You can init a Hash with default by `Hash.new('some_default')`
+7. Default value of a Hash is a single mutable object. This default object is shared across Hash
+8. If you don't want to share the default object, do `hash = Hash.new {|hash, key| hash[key] = 'some_default'}`
+
+## String
