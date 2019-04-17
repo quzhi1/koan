@@ -120,5 +120,7 @@ class AboutIteration < Neo::Koan
   #
   # When you get to the "AboutSandwichCode" koan, recheck your answer.
   # My Answer: maybe to prevent memory leak?
+  # My Answer when I come back: File.open took advantage of sandwich code pattern.
+  # With File.open, we don't need to concern closing the file, memory management, etc
 
 end

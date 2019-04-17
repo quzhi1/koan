@@ -104,7 +104,7 @@
     ```
 3. Create vararg method by `method_with_var_args(*args)`
 4. Method return can be explicit (`return xxx`) or implicit (put `xxx` on the last line)
-5. Make method private by `private :my_private_method`
+5. Make method private by `private :my_private_method`, or use private as a line boundary
 6. Create keyword method by `def method_with_keyword_arguments(one: 1, two: 'two')`
 
 # Constant
@@ -126,6 +126,7 @@
 # Exception
 1. Never rescue Exception in Ruby! Rescue StandardError instead.
 2. RuntimeError < StandardError < Exception < Object
+3. Instead of try, throw, catch, and finally, Ruby have `begin`, `raise`, `rescue`, and `ensure`
 
 # Iteration
 1. Use `.each` as foreach in Java
@@ -140,3 +141,18 @@
 2. `block_given?` returns true if yield is overrode
 3. Define lambda function by `func = lambda { |x| ... }`. Call it by `func.call(x)` or `func[x]`
 4. Lambda function can be passed by `&func`
+5. Having `yield` in method is perfect for sandwich code pattern. Abstract the file io, exception handling, etc, you can focus on business logic
+
+# Class
+1. Define field as `@field1`, they are private by default
+2. You can define field inside methods. It will be dynamically created once the method is called
+3. You can still access private field by calling `.instance_variables`, which returns a Hash
+4. You can also use `.instance_eval { @name }` or `.instance_eval("@name")` to access private field
+5. Use `attr_reader :field_name` to define getter
+6. Use `attr_accessor :name` to define getter and setter
+7. Constructor is done by `def initialize(initial_arg)`
+8. Class can be redefined, even including built-in class
+9. Use `.ancestors` to return array of inheritance ancestors
+10. `super` refer to parent method, not class. Unlike Java, you can't call `super.parent_method`
+
+# Module
