@@ -60,3 +60,83 @@
 8. If you don't want to share the default object, do `hash = Hash.new {|hash, key| hash[key] = 'some_default'}`
 
 ## String
+1. String can be created by quotes `''` and `""`, or flexible quote `%()`, `%!!`, `%{}`
+2. Create String with document:
+    ```ruby
+    <<EOS
+    It was the best of times,
+    It was the worst of times.
+    EOS
+    ```
+    Notice it counts as two lines
+3. Flexible quote can handle multiple lines (\n character automatically added)
+4. String can be appended by `<<` (like Array). **This is preferred**
+5. Single quoted String escape `\'`, double quoted String escape `\"`. Both escape `\\`
+6. Only double quote recognize `\n` as one char
+7. Create single character string by `?a`, `?b`, etc
+8. Use `.split(/some_regex/)` to split. Use `.split` to split with space
+9. Use `.join(" ")` to join
+10. `"a string" == "a string" && "a string".object_id != "a string".object_id`
+
+## Symbol
+1. Symbol is created by `s = :some_symbol`
+2. Identical symbols are a single internal object. i.e. `:a.object_id == :a.object_id`
+3. When you create class, functions, and variables, they automatically become symbols
+4. If a symbol has space, create by `:"some symbol"`, or `"some symbol".to_sym`
+5. Symbols are **immutable**, but they are not immutable Strings
+6. Symbols can be useful as hash keys, since they are fast-accessible
+
+## Regexp
+1. Create Regexp by `r = /some_regexp/`
+2. Return first match (or nil) by `"some_string"[/some_regexp/]`
+3. Select group by `"Gray, James"[/(\w+), (\w+)/, 1]`. Groups are stored in $1, $2, etc
+4. Use `.scan` to return all groups as Array
+5. Use `"one two-three".sub(/(t\w*)/) { $1[0, 1] }` to replace first match
+6. Use `"one two-three".gsub(/(t\w*)/) { $1[0, 1] }` to replace all
+
+# Methods
+1. Method calls can incurred by `my_global_method(2,3)` or `my_global_method 2, 3`
+2. Default methods parameters by
+    ```ruby
+    def method_with_defaults(a, b=:default_value)
+        [a, b]
+    end
+    ```
+3. Create vararg method by `method_with_var_args(*args)`
+4. Method return can be explicit (`return xxx`) or implicit (put `xxx` on the last line)
+5. Make method private by `private :my_private_method`
+6. Create keyword method by `def method_with_keyword_arguments(one: 1, two: 'two')`
+
+# Constant
+1. Top level constant (global variables are referenced by `::`)
+2. Constants are default to public
+3. Subclass can inherit parent's method
+
+# If & Else
+1. `unless (...)` is `if !(...)`
+2. `next` is `continue` in Java
+3. Repeat by 
+    ```ruby
+    10.times do
+        sum += 1
+    end
+    ```
+4. `if a != nil` can be simplified as `if a`
+
+# Exception
+1. Never rescue Exception in Ruby! Rescue StandardError instead.
+2. RuntimeError < StandardError < Exception < Object
+
+# Iteration
+1. Use `.each` as foreach in Java
+2. Stream calculate by `.collect` or `.map`
+3. Filter elements by `.select` or `.find_all`
+4. Use `.find` as findFirst in Java
+5. `.inject` can be used as accumulator
+6. Iterators can work with Array and Range, but will return Array no matter what
+
+# Block
+1. `yield` is a placeholder. Outside block can override `yield`
+2. `block_given?` returns true if yield is overrode
+3. Define lambda function by `func = lambda { |x| ... }`. Call it by `func.call(x)` or `func[x]`
+4. Lambda function can be passed by `&func`
