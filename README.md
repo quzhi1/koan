@@ -143,7 +143,7 @@
 4. Lambda function can be passed by `&func`
 5. Having `yield` in method is perfect for sandwich code pattern. Abstract the file io, exception handling, etc, you can focus on business logic
 
-# Class
+# Class & Object
 1. Define field as `@field1`, they are private by default
 2. You can define field inside methods. It will be dynamically created once the method is called
 3. You can still access private field by calling `.instance_variables`, which returns a Hash
@@ -154,5 +154,29 @@
 8. Class can be redefined, even including built-in class
 9. Use `.ancestors` to return array of inheritance ancestors
 10. `super` refer to parent method, not class. Unlike Java, you can't call `super.parent_method`
+11. Class is also an object!
+12. You can define method on object instead of class. It will only affect one object
+13. Define static method by `def ClassName.a_class_method` or `def self.a_class_method`, or 
+    ```ruby
+    class Dog
+      class << self
+        def another_class_method
+          :still_another_way
+        end
+      end
+    end
+    ```
+14. Use `.send(:method_name)` or `.__send__(:method_name)` to dynamically invoke method
+15. Use `.respond_to?(:method_name)` to dynamically check method
 
 # Module
+1. Modules are not classes. You can't initialize an object out of it
+2. Use `include some_module` to import it
+3. Classes with same name but different module are not the same class (because of scoping).
+4. Name in scope overrides from inside to outside. If you don't specify scope, the default is the inner most name
+5. Class names are just constants
+6. Use `.const_get` to dynamically load constant
+7. Use `.constants` to return a list of constant in this scope
+
+# Misc
+1. Don't just override `to_s`, do it to `to_str` as well.
