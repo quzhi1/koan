@@ -51,7 +51,7 @@
 
 ## Hash
 1. Create Hash by `h = { one: 'uno', two: 'dos' }`
-2. `h[:not_exist]` can return nil, `h[:not_exist]` will raise `KeyError`
+2. `h[:not_exist]` can return nil, `h.fetch(:not_exist)` will raise `KeyError`
 3. Use `.include?` to check existence
 4. `.keys` returns array of keys, `.values` returns array of values
 5. Hash can merge another hash by `.merge`
