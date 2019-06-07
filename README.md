@@ -11,7 +11,7 @@
 2. You can use `.to_s?` and `.inspect` on everything, inspect is used more for debugging and to_s for end-user or display purposes.
 3. Every object can be created by `obj = Object.new`
 4. Every object has an unique id (integer), which can be referenced as `.object_id`
-5. Use `.clone` to make a copy, they will have different id
+5. Use `.clone` to make a copy, they will have different id. Method `.dup` can also clone an object, and unfreeze it. Keep in mind that `.clone` and `.dup` are both shallow-copying.
 
 ## Array
 1. Creat array by `a = [1, 2, 3]`
